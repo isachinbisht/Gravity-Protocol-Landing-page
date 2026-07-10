@@ -1,0 +1,6 @@
+{
+  "name": "Area",
+  "description": "A highly-polished, elegant landing page and dashboard platform featuring real-time analytics, open-source architecture, and modular UI components.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
