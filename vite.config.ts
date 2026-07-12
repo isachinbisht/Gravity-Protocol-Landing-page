@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 import express from 'express';
 import fs from 'fs';
+import 'dotenv/config';
 
 export default defineConfig(() => {
   return {
@@ -17,11 +18,12 @@ export default defineConfig(() => {
           const app = express();
           app.use(express.json());
           
-          app.post('/api/waitlist', (req, res) => {
+          app.post('/api/waitlist', async (req, res) => {
             try {
               const data = req.body;
               data.timestamp = new Date().toISOString();
               
+              // 1. Save locally to waitlist.json (fallback/record)
               let waitlist = [];
               if (fs.existsSync('waitlist.json')) {
                 waitlist = JSON.parse(fs.readFileSync('waitlist.json', 'utf-8'));
@@ -29,6 +31,26 @@ export default defineConfig(() => {
               waitlist.push(data);
               fs.writeFileSync('waitlist.json', JSON.stringify(waitlist, null, 2));
               
+              // 2. Send to Google Sheets via Apps Script Web App
+              // Requires GOOGLE_SCRIPT_URL in .env file
+              const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
+              if (scriptUrl) {
+                try {
+                  const googleRes = await fetch(scriptUrl, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                  });
+                  if (!googleRes.ok) {
+                    console.error('Failed to forward to Google Sheets:', googleRes.statusText);
+                  }
+                } catch (fetchErr) {
+                  console.error('Error contacting Google Apps Script:', fetchErr);
+                }
+              }
+
               res.json({ success: true });
             } catch (error) {
               console.error(error);
