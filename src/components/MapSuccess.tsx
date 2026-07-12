@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Sparkles, ArrowRight, Wallet, Coins, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
+import autonomousInvestingPath from "../assets/images/autonomous_investing_path.png";
 
 export default function MapSuccess() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -115,7 +116,7 @@ export default function MapSuccess() {
         className="mt-16 rounded-3xl overflow-hidden shadow-lg border border-[#EAE8E2] h-[360px] relative group"
       >
         <img
-          src="/src/assets/images/autonomous_investing_path.png"
+          src={autonomousInvestingPath}
           alt="Glowing network path representing autonomous investing"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-1000 ease-out"

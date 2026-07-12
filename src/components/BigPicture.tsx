@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Check, ArrowRight, Sparkles, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import smartContractsAbstract from "../assets/images/smart_contracts_abstract.png";
 
 export default function BigPicture() {
   const [activeItem, setActiveItem] = useState(0);
@@ -135,7 +136,7 @@ export default function BigPicture() {
           {/* Aesthetic Asset */}
           <div className="rounded-3xl overflow-hidden border border-[#EAE8E2] bg-brand-sand/10 relative h-[420px] shadow-sm">
             <img
-              src="/src/assets/images/smart_contracts_abstract.png"
+              src={smartContractsAbstract}
               alt="Minimalist abstract representation of glowing blockchain smart contracts"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"

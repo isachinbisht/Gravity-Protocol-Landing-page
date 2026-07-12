@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Vault, Activity, RefreshCw, Coins, ArrowUpRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import defiLandscape from "../assets/images/defi_landscape.png";
 
 export default function FeatureGrid() {
   const [selectedFeature, setSelectedFeature] = useState<number | null>(null);
@@ -145,7 +146,7 @@ export default function FeatureGrid() {
         className="mt-16 rounded-3xl overflow-hidden shadow-lg border border-[#EAE8E2] h-[400px] relative group"
       >
         <img
-          src="/src/assets/images/defi_landscape.png"
+          src={defiLandscape}
           alt="Abstract decentralized finance network landscape"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-1000 ease-out"

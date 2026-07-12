@@ -1,6 +1,7 @@
 import React from "react";
 import { Quote, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
+import portfolioBalance from "../assets/images/portfolio_balance.png";
 
 export default function Testimonial() {
   return (
@@ -17,7 +18,7 @@ export default function Testimonial() {
             className="rounded-3xl overflow-hidden border border-[#EAE8E2] bg-brand-sand/15 relative h-[380px] md:h-[440px] shadow-sm group"
           >
             <img
-              src="/src/assets/images/portfolio_balance.png"
+              src={portfolioBalance}
               alt="Abstract 3D rendering representing financial balance and portfolio management"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-1000 ease-out"
